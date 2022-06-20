@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}Borrow a Book{% endblock %}</h1>
+<form method="post">
+    <p>
+        <label for="book_id">book id</label>
+        <input type="text" name="book_id" placeholder="ID of the book">
+        </input>
+    </p>
+    <p>
+        <label for="user_name">user name</label>
+        <input type="text" name="user_name" placeholder="name of the borrower">
+        </input>
+    </p>
+    <p>
+        <label for="user_pw">user password</label>
+        <input type="password" name="user_pw" placeholder="default : ID">
+        </input>
+    </p>
+    <p>
+        <button type="submit">Borrow</button>
+    </p>
+</form>
+
+{% if error %}
+<div class="error">
+    Error : {{error}}
+</div>
+{% endif %}
+
+<h1>Borrow Log</h1>
+{% for borrow in borrows %}
+<div class="book">
+    User {{borrow[1]}} borrowed book #{{borrow[0]}} in {{borrow[2]}}
+</div>
+{% endfor %}
+
+{% endblock %}

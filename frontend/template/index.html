@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to LibraryOnline</h1>
+<h2> Recommend to you... </h2>
+{% for book in books %}
+<div class="book">
+    #{{book[0]}} {{book[2]}} BY {{book[3]}}
+    <p class="review">
+        isbn : {{book[1]}} <br>
+        Borrowed <span class="highlight">{{book[9]}}</span> times
+    </p>
+</div>
+{% endfor %}
+{% endblock %}

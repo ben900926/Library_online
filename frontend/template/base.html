@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Home {% endblock %}- LibraryOnline</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .book {
+            padding: 20px;
+            margin: 10px;
+            font-size: 20px;
+            background-color: #f7f4f4;
+        }
+
+        .profile{
+            padding: 20px;
+            margin: 10px;
+            font-size: 20px;
+            background-color: #e88787;
+        }
+
+        .review {
+            margin-left: 50px;
+            font-size: 15px;
+        }
+        .error {
+            padding: 20px;
+            margin: 10px;
+            background-color: #b94f66;
+        }
+        .highlight{
+            color: blue;
+            font-size: 25px;
+        }
+        .borrowed{
+            color: gray;
+            font-size: 15px;
+        }
+        .warn{
+            color: red;
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('search') }}">Search</a>
+        <a href="{{ url_for('create')}}">Borrow</a>
+        <a href="{{ url_for('return_') }}">Return</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

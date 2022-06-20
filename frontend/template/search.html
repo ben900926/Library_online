@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}Search with name{% endblock %}</h1>
+
+<form method="post">
+    <p>
+        <label for="search_key">name of book:</label>
+        <input type="text" name="search_key" placeholder="key words">
+        </input>
+    </p>
+    <p>
+        <button type="submit">Search</button>
+    </p>
+</form>
+
+<h2>We found...</h2>
+{% for result in search_results %}
+<div class="book">
+    #{{result[0]}} {{result[2]}} BY {{result[3]}}
+    <p class="review">
+        isbn:{{result[1]}} &nbsp; {{result[7]}}<br>
+        {% if result[8]=='1' %}
+        <span class="highlight">available</span>
+        {% else %}
+        <span class="borrowed">borrowed</span>
+        {% endif %}
+        &nbsp;&nbsp;
+        {% if result[9] != None %}
+        <span class="borrowed">Borrowed</span> <span class="highlight">{{result[9]}}</span> <span class="borrowed">times</span>
+        {% endif %}
+    </p>
+</div>
+{% endfor %}
+
+{% endblock %}

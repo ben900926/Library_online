@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}User Profile{% endblock %}</h1>
+
+<form method="post">
+    <p>
+        <label for="user_nm">user name:</label>
+        <input type="text" name="user_nm" placeholder="name of user">
+        </input>
+    </p>
+    <p>
+        <label for="user_pw">user password:</label>
+        <input type="password" name="user_pw" placeholder="password">
+        </input>
+    </p>
+    <p>
+        <button type="submit">Login</button>
+    </p>
+</form>
+
+{% if error %}
+<div class="error">
+    Error : {{error}}
+</div>
+{% endif %}
+
+{% if profile %}
+<h2>About me</h2>
+<div class="profile">
+    #{{profile[0]}}&nbsp;{{profile[4]}}<br>
+    <span class="borrowed">{{profile[1]}}, joined in {{profile[2]}}</span><br>
+    <span class="review">
+        {{profile[3]}}
+    </span>
+</div>
+{% endif %}
+
+{% if bb %}
+<h2>Borrowing <span class="highlight">{{bc[0]}}</span> books</h2>
+{% for b in bb %}
+<div class="book">
+    #{{b[0]}} {{b[4]}} borrowed IN {{b[2]}}<br>
+    
+    {% if b[-1] >= 0 %}
+    remain <span class="highlight"> {{b[-1]}} </span>days
+    {% else %}
+    <span class="warn">due {{b[-1]}} days</span>
+    {% endif %}
+    
+</div>
+{% endfor %}
+{% endif %}
+
+{% if bb2 %}
+<h2>Borrowed <span class="highlight">{{bc2[0]}}</span> books</h2>
+{% for b in bb2 %}
+<div class="book">
+    #{{b[0]}} {{b[5]}} borrowed IN {{b[3]}} ; returnd IN {{b[1]}}
+</div>
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock %}
