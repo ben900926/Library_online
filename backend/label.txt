@@ -1,0 +1,12 @@
+id	ISBN (020$a$c)	書名 (245$a$b)	編著者 (245$c)	版本 (250)	面頁數尺寸 (300)	集叢名(490/$a)	館藏地及索書號(949$a$d$e)	NBI紀錄號 (907$a)
+id	出版項 (260)	出版項 (264)	出版年 (008/07-10)
+
+
+
+\copy public.book (book_id, isbn, name_, author, edition, page_size, category, information, available) FROM 'C:/Users/ben90/Desktop/DATABA~1/hw3/nbidata_111Q1.csv' CSV
+
+\copy public.publisher (book_id, publisher1, publisher2, publish_year) FROM 'C:/Users/ben90/Desktop/DATABA~1/hw3/publish.csv' CSV
+
+\copy public.user (user_id, gender, created_time,description,name_,timezone) FROM 'C:/Users/ben90/Desktop/DATABA~1/hw3/user_true.csv' CSV
+
+\copy public.test (id,gender) FROM 'C:/Users/ben90/Desktop/DATABA~1/hw3/test.csv' CSV
