@@ -2,7 +2,7 @@ import psycopg2
 import os
 from datetime import datetime
 from flask import Flask, render_template, request, url_for, redirect
-
+from db_config import *
 # to set FLASK_APP --> $env:FLASK_APP = "library_online.py"
 # development mode : $env:FLASK_ENV = "development"
 template_dir = os.path.dirname(__file__)
@@ -14,8 +14,8 @@ due_day = 7
 app = Flask(__name__, template_folder=template_dir)
 
 def connect_db():
-    conn = psycopg2.connect(host="database-2.c38is089rsey.us-east-1.rds.amazonaws.com",
-                    database="library_system", user="postgres", password="ben95hsa1") # remember to hide credentails
+    conn = psycopg2.connect(host=db_host,
+                    database=db_name, user=db_user, password=db_pw) # remember to hide credentails
     return conn
 
 @app.route('/')
